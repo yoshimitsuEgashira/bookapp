@@ -25,3 +25,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## My Rules
+
+About branch naming convention
+
+- master → For production
+- develop → Principal axis on which the commit under development is done
+- feature-[fucntion_name] → When develop new function
