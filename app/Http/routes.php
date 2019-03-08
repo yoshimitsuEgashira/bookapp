@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 //     return view('books');
 // });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middlewareGroups' => ['web']], function () {
 
   Route::get('/', function(){
     $books = Book::all();
