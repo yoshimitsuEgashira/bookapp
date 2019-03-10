@@ -51,4 +51,6 @@ Route::group(['middlewareGroups' => ['web']], function () {
 
     return redirect('/');
   });
+
+  Route::auth();
 });
