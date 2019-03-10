@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 //     return view('books');
 // });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middlewareGroups' => ['web']], function () {
 
   Route::get('/', function(){
     $books = Book::all();
@@ -28,10 +28,27 @@ Route::group(['middleware' => ['web']], function () {
   });
 
   Route::post('/book', function(Request $request){
-    //
+    $validator = Validator::make($request->all(), [
+      'name' => 'required|max:255',
+    ]);
+
+    if ($validator->fails()) {
+      return redirect('/')
+        ->withInput()
+        ->withErrors($validator);
+    }
+
+    $book = new Book;    // ORM
+    $book->title = $request->name;
+    $book->save();
+
+    return redirect('/');
+
   });
 
   Route::delete('/book/{book}', function(Book $book){
-    //
+    $book->delete();
+
+    return redirect('/');
   });
 });
