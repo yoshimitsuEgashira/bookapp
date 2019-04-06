@@ -66,6 +66,16 @@
                         </button>
                       </form>
                     </td>
+                    <td>
+                      <form action="/book/edit/{{ $book->id }}" method="POST">
+                          {{ csrf_field() }}
+                          {{ method_field('EDIT') }}
+
+                          <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>編集
+                          </button>
+                        </form>
+                    </td>
                   </tr>
                 @endforeach
               </tbody>
