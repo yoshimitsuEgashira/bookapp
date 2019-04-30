@@ -54,7 +54,16 @@
                 @foreach ($books as $book)
                   <tr>
                     <td class="table-text"><div>{{ $book->title }}</div></td>
+                    <td>
+                      <form action="/book/edit/{{ $book->id }}" method="POST">
+                          {{ csrf_field() }}
+                          {{ method_field('EDIT') }}
 
+                          <button type="submit" class="btn btn-default">
+                            <i class="fa fa-pencil"></i>編集
+                          </button>
+                        </form>
+                    </td>
                     <!-- Task Delete Button -->
                     <td>
                       <form action="/book/{{ $book->id }}" method="POST">
@@ -65,16 +74,6 @@
                           <i class="fa fa-trash"></i>削除
                         </button>
                       </form>
-                    </td>
-                    <td>
-                      <form action="/book/edit/{{ $book->id }}" method="POST">
-                          {{ csrf_field() }}
-                          {{ method_field('EDIT') }}
-
-                          <button type="submit" class="btn btn-danger">
-                            <i class="fa fa-trash"></i>編集
-                          </button>
-                        </form>
                     </td>
                   </tr>
                 @endforeach
